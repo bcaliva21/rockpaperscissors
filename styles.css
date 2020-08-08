@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+header {
+    background: teal;
+    padding: 20px;
+}
+
+header > h1 {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+}
+body {
+    background-color: rgb(12, 5, 63);
+}
+.score-board {
+    margin: 20px auto;
+    color: white;
+    border: 3px solid white;
+    border-radius: 3px;
+    width: 200px;
+    text-align: center;
+    font-size: 25px;
+    padding: 15px 20px;
+    position: relative;
+}
+
+.badge {
+    background: teal;
+    color: whitesmoke;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#user-label {
+    position: absolute;
+    top: 20px;
+    left: -20px;
+}
+
+#computer-label {
+    position: absolute;
+    top: 20px;
+    right: -30px;
+}
+
+img {
+    max-width: 125px;
+    height: auto;
+}
+
+.choice {
+    display: inline-block;
+    border: 3px solid white;
+    border-radius: 25%;
+    padding: 5px;
+    margin: 0px 20px;
+    transition: all 0.3s ease;
+}
+
+.choice:hover {
+    cursor: pointer;
+    background-color: teal;
+}
+
+.choices {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.result > p {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+}
+
+.new-game-prompt {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
