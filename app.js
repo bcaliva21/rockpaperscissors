@@ -18,6 +18,7 @@ function getComputerChoice() {
     return compOptions.sample();
 };
 
+//clean up these two functions
 function win(userChoice, computerChoice) {
     userScore++;
     userScore_span.innerHTML = userScore;
@@ -44,21 +45,22 @@ function convertToWord(letter) {
     if (letter === 's') {return 'Scissors';};
 };
 
-
 function game(userChoice) {
     const computerChoice = getComputerChoice();
-    if (userChoice === computerChoice) {
-        return draw();
-    } else if (userChoice === 'r' && computerChoice === 's') {
-        return win(convertToWord(userChoice), convertToWord(computerChoice));
-    } else if (userChoice === 'p' && computerChoice === 'r') {
-        return win(convertToWord(userChoice), convertToWord(computerChoice));
-    } else if (userChoice === 's' && computerChoice === 'p') {
-        return win(convertToWord(userChoice), convertToWord(computerChoice));
-    } else {
-        return lose(convertToWord(userChoice), convertToWord(computerChoice));
+    switch(userChoice + computerChoice) {
+        case 'rs':
+        case 'pr':
+        case 'sp':
+            return win(convertToWord(userChoice), convertToWord(computerChoice));
+            break;
+        case 'rr':
+        case 'ss':
+        case 'pp':
+            return draw();
+            default:
+                return lose(convertToWord(userChoice), convertToWord(computerChoice));
     }
-};
+}
 
 
 function main() {
