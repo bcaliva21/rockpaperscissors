@@ -18,47 +18,35 @@ function getComputerChoice() {
     return compOptions.sample();
 };
 
-function win(userChoice, computerChoice) {
-    userScore++;
-    userScore_span.innerHTML = userScore;
-    computerScore_span.innerHTML = computerScore;
-    result_div.innerHTML = userChoice + ' beats ' + computerChoice + '. You win :)';
-};
-
-function lose(userChoice, computerChoice) {
-    computerScore++;
-    computerScore_span.innerHTML = computerScore;
-    userScore_span.innerHTML = userScore;
-    result_div.innerHTML = computerChoice + ' beats ' + userChoice + '. You lose :(';
-};
-
-function draw(userChoice, computerChoice) {
-    computerScore_span.innerHTML = computerScore;
-    userScore_span.innerHTML = userScore;
-    result_div.innerHTML = 'This game is a draw.'
-};
-
 function convertToWord(letter) {
     if (letter === 'r') {return 'Rock';};
     if (letter === 'p') {return 'Paper';};
     if (letter === 's') {return 'Scissors';};
 };
 
-
 function game(userChoice) {
     const computerChoice = getComputerChoice();
-    if (userChoice === computerChoice) {
-        return draw();
-    } else if (userChoice === 'r' && computerChoice === 's') {
-        return win(convertToWord(userChoice), convertToWord(computerChoice));
-    } else if (userChoice === 'p' && computerChoice === 'r') {
-        return win(convertToWord(userChoice), convertToWord(computerChoice));
-    } else if (userChoice === 's' && computerChoice === 'p') {
-        return win(convertToWord(userChoice), convertToWord(computerChoice));
-    } else {
-        return lose(convertToWord(userChoice), convertToWord(computerChoice));
+    switch(userChoice + computerChoice) {
+        case 'rs':
+        case 'pr':
+        case 'sp':
+            return userScore++,
+            userScore_span.innerHTML = userScore,
+            computerScore_span.innerHTML = computerScore,
+            result_div.innerHTML = convertToWord(userChoice) + ' beats ' + convertToWord(computerChoice) + '. You win :)';
+        case 'rr':
+        case 'ss':
+        case 'pp':
+            return computerScore_span.innerHTML = computerScore,
+            userScore_span.innerHTML = userScore,
+            result_div.innerHTML = 'This game is a draw.';
+            default:
+                return computerScore++,
+                computerScore_span.innerHTML = computerScore,
+                userScore_span.innerHTML = userScore,
+                result_div.innerHTML = convertToWord(computerChoice) + ' beats ' + convertToWord(userChoice) + '. You lose :(';
     }
-};
+}
 
 
 function main() {
