@@ -18,27 +18,6 @@ function getComputerChoice() {
     return compOptions.sample();
 };
 
-//clean up these two functions
-function win(userChoice, computerChoice) {
-    userScore++;
-    userScore_span.innerHTML = userScore;
-    computerScore_span.innerHTML = computerScore;
-    result_div.innerHTML = userChoice + ' beats ' + computerChoice + '. You win :)';
-};
-
-function lose(userChoice, computerChoice) {
-    computerScore++;
-    computerScore_span.innerHTML = computerScore;
-    userScore_span.innerHTML = userScore;
-    result_div.innerHTML = computerChoice + ' beats ' + userChoice + '. You lose :(';
-};
-
-function draw(userChoice, computerChoice) {
-    computerScore_span.innerHTML = computerScore;
-    userScore_span.innerHTML = userScore;
-    result_div.innerHTML = 'This game is a draw.'
-};
-
 function convertToWord(letter) {
     if (letter === 'r') {return 'Rock';};
     if (letter === 'p') {return 'Paper';};
@@ -51,14 +30,21 @@ function game(userChoice) {
         case 'rs':
         case 'pr':
         case 'sp':
-            return win(convertToWord(userChoice), convertToWord(computerChoice));
-            break;
+            return userScore++,
+            userScore_span.innerHTML = userScore,
+            computerScore_span.innerHTML = computerScore,
+            result_div.innerHTML = convertToWord(userChoice) + ' beats ' + convertToWord(computerChoice) + '. You win :)';
         case 'rr':
         case 'ss':
         case 'pp':
-            return draw();
+            return computerScore_span.innerHTML = computerScore,
+            userScore_span.innerHTML = userScore,
+            result_div.innerHTML = 'This game is a draw.';
             default:
-                return lose(convertToWord(userChoice), convertToWord(computerChoice));
+                return computerScore++,
+                computerScore_span.innerHTML = computerScore,
+                userScore_span.innerHTML = userScore,
+                result_div.innerHTML = convertToWord(computerChoice) + ' beats ' + convertToWord(userChoice) + '. You lose :(';
     }
 }
 
